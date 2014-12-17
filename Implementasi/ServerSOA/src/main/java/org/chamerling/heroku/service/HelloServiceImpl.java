@@ -7,6 +7,7 @@ import com.firebase.client.Firebase;
 import com.tubes2.Komentar.*;
 import com.tubes2.Post.*;
 import com.tubes2.User.*;
+import java.util.ArrayList;
 
 import java.util.HashMap;
 import java.util.Map;
@@ -47,5 +48,8 @@ public class HelloServiceImpl implements HelloService {
 	public boolean updateUser(String Nama, String Username,String Password, String Email, String Status){
 		return com.tubes2.User.userPaket.updateUser(Username, Nama, Password, Email, Status);
 	}
-
+	
+	public ArrayList<String> readUser(String Username){
+		return com.tubes2.User.userPaket.readUser(Username);
+	}
 }

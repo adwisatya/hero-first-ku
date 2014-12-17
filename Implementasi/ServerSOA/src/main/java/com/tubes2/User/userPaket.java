@@ -5,11 +5,29 @@
  */
 
 package com.tubes2.User;
+import com.firebase.client.DataSnapshot;
 import com.firebase.client.Firebase;
+import com.firebase.client.FirebaseError;
+import com.firebase.client.Query;
+import com.firebase.client.ValueEventListener;
+import java.io.BufferedReader;
+import java.io.IOException;
+import java.io.InputStreamReader;
+import java.net.MalformedURLException;
+import java.net.URL;
+import java.net.URLConnection;
 import java.text.SimpleDateFormat;
+import java.util.ArrayList;
+import static java.util.Collections.list;
 import java.util.Date;
 import java.util.HashMap;
+import java.util.Iterator;
 import java.util.Map;
+import java.util.logging.Level;
+import org.apache.commons.io.IOUtils;
+import org.json.JSONArray;
+import org.json.JSONException;
+import org.json.JSONObject;
 /**
  *
  * @author adwisatya
@@ -108,4 +126,23 @@ public class userPaket {
 		userRef.setValue(newUser);
 		return statusOp;	
 	}
+	
+	public static ArrayList<String> readUser(String Username) {
+	   ArrayList<String> dataUser = new ArrayList<String>();
+	   try {
+		   URL url = new URL("https://popping-fire-1228.firebaseio.com/users/" + Username + ".json");
+		   URLConnection connection = url.openConnection();
+		   JSONObject json = new JSONObject(IOUtils.toString(connection.getInputStream()));
+		   Iterator<String> keys = json.keys();
+			   JSONObject jsonUser = json.getJSONObject(keys.next());
+			   dataUser.add(0,"dasdasdsadas");
+			   dataUser.add(1,jsonUser.getString("username"));
+			   dataUser.add(2,jsonUser.getString("password"));
+			   dataUser.add(3,jsonUser.getString("email"));
+			   dataUser.add(4,jsonUser.getString("status"));
+	   } catch (JSONException ex) {
+	   } catch (IOException ex) {
+	   }
+	   return dataUser;
+   }
 }
