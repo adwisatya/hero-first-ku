@@ -1,0 +1,129 @@
+<?xml version='1.0' encoding='UTF-8'?><wsdl:definitions name="HelloServiceImplService" targetNamespace="http://service.heroku.chamerling.org/" xmlns:ns1="http://schemas.xmlsoap.org/soap/http" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:tns="http://service.heroku.chamerling.org/" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+  <wsdl:types>
+<xs:schema elementFormDefault="unqualified" targetNamespace="http://service.heroku.chamerling.org/" version="1.0" xmlns:tns="http://service.heroku.chamerling.org/" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+<xs:element name="addPost" type="tns:addPost"/>
+<xs:element name="addPostResponse" type="tns:addPostResponse"/>
+<xs:element name="addUser" type="tns:addUser"/>
+<xs:element name="addUserResponse" type="tns:addUserResponse"/>
+<xs:element name="sayHi" type="tns:sayHi"/>
+<xs:element name="sayHiResponse" type="tns:sayHiResponse"/>
+<xs:complexType name="sayHi">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="arg0" type="xs:string"/>
+    </xs:sequence>
+  </xs:complexType>
+<xs:complexType name="sayHiResponse">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="return" type="xs:string"/>
+    </xs:sequence>
+  </xs:complexType>
+<xs:complexType name="addPost">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="arg0" type="xs:string"/>
+      <xs:element minOccurs="0" name="arg1" type="xs:string"/>
+      <xs:element minOccurs="0" name="arg2" type="xs:string"/>
+      <xs:element minOccurs="0" name="arg3" type="xs:string"/>
+      <xs:element name="arg4" type="xs:int"/>
+    </xs:sequence>
+  </xs:complexType>
+<xs:complexType name="addPostResponse">
+    <xs:sequence>
+      <xs:element name="return" type="xs:boolean"/>
+    </xs:sequence>
+  </xs:complexType>
+<xs:complexType name="addUser">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="arg0" type="xs:string"/>
+      <xs:element minOccurs="0" name="arg1" type="xs:string"/>
+      <xs:element minOccurs="0" name="arg2" type="xs:string"/>
+      <xs:element minOccurs="0" name="arg3" type="xs:string"/>
+      <xs:element minOccurs="0" name="arg4" type="xs:string"/>
+    </xs:sequence>
+  </xs:complexType>
+<xs:complexType name="addUserResponse">
+    <xs:sequence>
+      <xs:element name="return" type="xs:boolean"/>
+    </xs:sequence>
+  </xs:complexType>
+</xs:schema>
+  </wsdl:types>
+  <wsdl:message name="sayHiResponse">
+    <wsdl:part element="tns:sayHiResponse" name="parameters">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="addUserResponse">
+    <wsdl:part element="tns:addUserResponse" name="parameters">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="addPostResponse">
+    <wsdl:part element="tns:addPostResponse" name="parameters">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="addPost">
+    <wsdl:part element="tns:addPost" name="parameters">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="sayHi">
+    <wsdl:part element="tns:sayHi" name="parameters">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="addUser">
+    <wsdl:part element="tns:addUser" name="parameters">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:portType name="HelloService">
+    <wsdl:operation name="sayHi">
+      <wsdl:input message="tns:sayHi" name="sayHi">
+    </wsdl:input>
+      <wsdl:output message="tns:sayHiResponse" name="sayHiResponse">
+    </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="addPost">
+      <wsdl:input message="tns:addPost" name="addPost">
+    </wsdl:input>
+      <wsdl:output message="tns:addPostResponse" name="addPostResponse">
+    </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="addUser">
+      <wsdl:input message="tns:addUser" name="addUser">
+    </wsdl:input>
+      <wsdl:output message="tns:addUserResponse" name="addUserResponse">
+    </wsdl:output>
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:binding name="HelloServiceImplServiceSoapBinding" type="tns:HelloService">
+    <soap:binding style="document" transport="http://schemas.xmlsoap.org/soap/http"/>
+    <wsdl:operation name="sayHi">
+      <soap:operation soapAction="" style="document"/>
+      <wsdl:input name="sayHi">
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output name="sayHiResponse">
+        <soap:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="addPost">
+      <soap:operation soapAction="" style="document"/>
+      <wsdl:input name="addPost">
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output name="addPostResponse">
+        <soap:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="addUser">
+      <soap:operation soapAction="" style="document"/>
+      <wsdl:input name="addUser">
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output name="addUserResponse">
+        <soap:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:service name="HelloServiceImplService">
+    <wsdl:port binding="tns:HelloServiceImplServiceSoapBinding" name="HelloServiceImplPort">
+      <soap:address location="http://fathomless-scrubland-8196.herokuapp.com/HelloService"/>
+    </wsdl:port>
+  </wsdl:service>
+</wsdl:definitions>
