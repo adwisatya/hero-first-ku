@@ -7,10 +7,13 @@ import com.firebase.client.Firebase;
 import com.tubes2.Komentar.*;
 import com.tubes2.Post.*;
 import com.tubes2.User.*;
+import java.io.IOException;
 import java.util.ArrayList;
 
 import java.util.HashMap;
 import java.util.Map;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 /**
  * @author chamerling
  * 
@@ -50,6 +53,13 @@ public class HelloServiceImpl implements HelloService {
 	}
 	
 	public ArrayList<String> readUser(String Username){
-		return com.tubes2.User.userPaket.readUser(Username);
+		ArrayList<String> dummy = new ArrayList<String>();
+		try {
+			return com.tubes2.User.userPaket.readUser(Username);
+		} catch (IOException ex) {
+			Logger.getLogger(HelloServiceImpl.class.getName()).log(Level.SEVERE, null, ex);
+		}
+		
+		return dummy;
 	}
 }

@@ -16,6 +16,7 @@ import java.io.InputStreamReader;
 import java.net.MalformedURLException;
 import java.net.URL;
 import java.net.URLConnection;
+import java.sql.Array;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import static java.util.Collections.list;
@@ -127,21 +128,22 @@ public class userPaket {
 		return statusOp;	
 	}
 	
-	public static ArrayList<String> readUser(String Username) {
+	public static ArrayList<String> readUser(String Username) throws IOException {
+	   String URLi = "https://popping-fire-1228.firebaseio.com/users/";
 	   ArrayList<String> dataUser = new ArrayList<String>();
 	   try {
-		   URL url = new URL("https://popping-fire-1228.firebaseio.com/users/" + Username + ".json");
-		   URLConnection connection = url.openConnection();
-		   JSONObject json = new JSONObject(IOUtils.toString(connection.getInputStream()));
-		   Iterator<String> keys = json.keys();
-			   JSONObject jsonUser = json.getJSONObject(keys.next());
-			   dataUser.add(0,"dasdasdsadas");
-			   dataUser.add(1,jsonUser.getString("username"));
-			   dataUser.add(2,jsonUser.getString("password"));
-			   dataUser.add(3,jsonUser.getString("email"));
-			   dataUser.add(4,jsonUser.getString("status"));
+		URL url = new URL(URLi +Username+ ".json");
+		URLConnection connection = url.openConnection();
+		JSONObject jsonUser = new JSONObject(IOUtils.toString(connection.getInputStream()));
+		dataUser.add(0,jsonUser.getString("nama"));
+		dataUser.add(1,jsonUser.getString("username"));
+		dataUser.add(2,jsonUser.getString("password"));
+		dataUser.add(3,jsonUser.getString("email"));
+		dataUser.add(4,jsonUser.getString("status"));
 	   } catch (JSONException ex) {
+		   
 	   } catch (IOException ex) {
+
 	   }
 	   return dataUser;
    }
