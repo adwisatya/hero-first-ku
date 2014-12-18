@@ -15,7 +15,7 @@ import java.util.Date;
 
 public class Paket{
 	public String Judul;
-	//public Date Tanggal;
+	public Long Tanggal;
 	public String Konten;
 	public String Owner;
 	//public String id;
